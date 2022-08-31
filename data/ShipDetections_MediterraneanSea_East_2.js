@@ -1,4 +1,4 @@
-var json_ShipDetections_MediterraneanSea_East_1 = {
+var json_ShipDetections_MediterraneanSea_East_2 = {
   "type": "FeatureCollection",
   "features": [
     {
