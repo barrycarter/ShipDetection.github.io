@@ -41,7 +41,7 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
         <script src="data/ShipDetections_BlackSea_1.js"></script>
-        <script src="data/ShipDetections_MediterraneanSea_East_2.js"></script>
+        <script src="data/ShipDetections_MediterraneanSea_East_1.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
@@ -351,7 +351,7 @@
         });
         bounds_group.addLayer(layer_ShipDetections_BlackSea_1);
         map.addLayer(layer_ShipDetections_BlackSea_1);
-        function pop_ShipDetections_MediterraneanSea_East_2(feature, layer) {
+        function pop_ShipDetections_MediterraneanSea_East_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['field_1'] !== null ? autolinker.link(feature.properties['field_1'].toLocaleString()) : '') + '</td>\
@@ -393,10 +393,10 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_ShipDetections_MediterraneanSea_East_2_0(feature) {
+        function style_ShipDetections_MediterraneanSea_East_1_0(feature) {
             if (feature.properties['DaysOld'] >= 95.050000 && feature.properties['DaysOld'] <= 100.000000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -407,7 +407,7 @@
             }
             if (feature.properties['DaysOld'] >= 90.100000 && feature.properties['DaysOld'] <= 95.050000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -418,7 +418,7 @@
             }
             if (feature.properties['DaysOld'] >= 85.150000 && feature.properties['DaysOld'] <= 90.100000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -429,7 +429,7 @@
             }
             if (feature.properties['DaysOld'] >= 80.200000 && feature.properties['DaysOld'] <= 85.150000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -440,7 +440,7 @@
             }
             if (feature.properties['DaysOld'] >= 75.250000 && feature.properties['DaysOld'] <= 80.200000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -451,7 +451,7 @@
             }
             if (feature.properties['DaysOld'] >= 70.300000 && feature.properties['DaysOld'] <= 75.250000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -462,7 +462,7 @@
             }
             if (feature.properties['DaysOld'] >= 65.350000 && feature.properties['DaysOld'] <= 70.300000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -473,7 +473,7 @@
             }
             if (feature.properties['DaysOld'] >= 60.400000 && feature.properties['DaysOld'] <= 65.350000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -484,7 +484,7 @@
             }
             if (feature.properties['DaysOld'] >= 55.450000 && feature.properties['DaysOld'] <= 60.400000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -495,7 +495,7 @@
             }
             if (feature.properties['DaysOld'] >= 50.500000 && feature.properties['DaysOld'] <= 55.450000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -506,7 +506,7 @@
             }
             if (feature.properties['DaysOld'] >= 45.550000 && feature.properties['DaysOld'] <= 50.500000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -517,7 +517,7 @@
             }
             if (feature.properties['DaysOld'] >= 40.600000 && feature.properties['DaysOld'] <= 45.550000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -528,7 +528,7 @@
             }
             if (feature.properties['DaysOld'] >= 35.650000 && feature.properties['DaysOld'] <= 40.600000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -539,7 +539,7 @@
             }
             if (feature.properties['DaysOld'] >= 30.700000 && feature.properties['DaysOld'] <= 35.650000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -550,7 +550,7 @@
             }
             if (feature.properties['DaysOld'] >= 25.750000 && feature.properties['DaysOld'] <= 30.700000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -561,7 +561,7 @@
             }
             if (feature.properties['DaysOld'] >= 20.800000 && feature.properties['DaysOld'] <= 25.750000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -572,7 +572,7 @@
             }
             if (feature.properties['DaysOld'] >= 15.850000 && feature.properties['DaysOld'] <= 20.800000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -583,7 +583,7 @@
             }
             if (feature.properties['DaysOld'] >= 10.900000 && feature.properties['DaysOld'] <= 15.850000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -594,7 +594,7 @@
             }
             if (feature.properties['DaysOld'] >= 1.000000 && feature.properties['DaysOld'] <= 5.950000 ) {
                 return {
-                pane: 'pane_ShipDetections_MediterraneanSea_East_2',
+                pane: 'pane_ShipDetections_MediterraneanSea_East_1',
                 radius: 2.4,
                 stroke: false,
                 fill: true,
@@ -604,28 +604,28 @@
             }
             }
         }
-        map.createPane('pane_ShipDetections_MediterraneanSea_East_2');
-        map.getPane('pane_ShipDetections_MediterraneanSea_East_2').style.zIndex = 402;
-        map.getPane('pane_ShipDetections_MediterraneanSea_East_2').style['mix-blend-mode'] = 'normal';
-        var layer_ShipDetections_MediterraneanSea_East_2 = new L.geoJson(json_ShipDetections_MediterraneanSea_East_2, {
+        map.createPane('pane_ShipDetections_MediterraneanSea_East_1');
+        map.getPane('pane_ShipDetections_MediterraneanSea_East_1').style.zIndex = 402;
+        map.getPane('pane_ShipDetections_MediterraneanSea_East_1').style['mix-blend-mode'] = 'normal';
+        var layer_ShipDetections_MediterraneanSea_East_1 = new L.geoJson(json_ShipDetections_MediterraneanSea_East_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ShipDetections_MediterraneanSea_East_2',
-            layerName: 'layer_ShipDetections_MediterraneanSea_East_2',
-            pane: 'pane_ShipDetections_MediterraneanSea_East_2',
-            onEachFeature: pop_ShipDetections_MediterraneanSea_East_2,
+            dataVar: 'json_ShipDetections_MediterraneanSea_East_1',
+            layerName: 'layer_ShipDetections_MediterraneanSea_East_1',
+            pane: 'pane_ShipDetections_MediterraneanSea_East_1',
+            onEachFeature: pop_ShipDetections_MediterraneanSea_East_1,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_ShipDetections_MediterraneanSea_East_2_0(feature));
+                return L.circleMarker(latlng, style_ShipDetections_MediterraneanSea_East_1_0(feature));
             },
         });
-        bounds_group.addLayer(layer_ShipDetections_MediterraneanSea_East_2);
-        map.addLayer(layer_ShipDetections_MediterraneanSea_East_2);
+        bounds_group.addLayer(layer_ShipDetections_MediterraneanSea_East_1);
+        map.addLayer(layer_ShipDetections_MediterraneanSea_East_1);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'ShipDetections_MediterraneanSea_East<br /><table><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_9511000.png" /></td><td>95.1 - 100</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_9019511.png" /></td><td>90.1 - 95.1</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_8529012.png" /></td><td>85.2 - 90.1</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_8028523.png" /></td><td>80.2 - 85.2</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_7538024.png" /></td><td>75.3 - 80.2</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_7037535.png" /></td><td>70.3 - 75.3</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_6547036.png" /></td><td>65.4 - 70.3</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_6046547.png" /></td><td>60.4 - 65.4</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_61098.png" /></td><td>6 - 10.9</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_5556049.png" /></td><td>55.5 - 60.4</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_50555510.png" /></td><td>50.5 - 55.5</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_45650511.png" /></td><td>45.6 - 50.5</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_40645612.png" /></td><td>40.6 - 45.6</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_35640613.png" /></td><td>35.6 - 40.6</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_30735614.png" /></td><td>30.7 - 35.6</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_25830715.png" /></td><td>25.8 - 30.7</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_20825816.png" /></td><td>20.8 - 25.8</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_15920817.png" /></td><td>15.9 - 20.8</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_10915918.png" /></td><td>10.9 - 15.9</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_2_1619.png" /></td><td>1 - 6</td></tr></table>': layer_ShipDetections_MediterraneanSea_East_2,'ShipDetections_BlackSea<br /><table><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_9511000.png" /></td><td>95.1 - 100</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_9019511.png" /></td><td>90.1 - 95.1</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_8529012.png" /></td><td>85.2 - 90.1</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_8028523.png" /></td><td>80.2 - 85.2</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_7538024.png" /></td><td>75.3 - 80.2</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_7037535.png" /></td><td>70.3 - 75.3</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_6547036.png" /></td><td>65.4 - 70.3</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_6046547.png" /></td><td>60.4 - 65.4</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_61098.png" /></td><td>6 - 10.9</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_5556049.png" /></td><td>55.5 - 60.4</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_50555510.png" /></td><td>50.5 - 55.5</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_45650511.png" /></td><td>45.6 - 50.5</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_40645612.png" /></td><td>40.6 - 45.6</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_35640613.png" /></td><td>35.6 - 40.6</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_30735614.png" /></td><td>30.7 - 35.6</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_25830715.png" /></td><td>25.8 - 30.7</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_20825816.png" /></td><td>20.8 - 25.8</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_15920817.png" /></td><td>15.9 - 20.8</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_10915918.png" /></td><td>10.9 - 15.9</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_1619.png" /></td><td>1 - 6</td></tr></table>': layer_ShipDetections_BlackSea_1,"Google Satellite": layer_GoogleSatellite_0,}).addTo(map);
+        L.control.layers(baseMaps,{'ShipDetections_MediterraneanSea_East<br /><table><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_9511000.png" /></td><td>95.1 - 100</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_9019511.png" /></td><td>90.1 - 95.1</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_8529012.png" /></td><td>85.2 - 90.1</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_8028523.png" /></td><td>80.2 - 85.2</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_7538024.png" /></td><td>75.3 - 80.2</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_7037535.png" /></td><td>70.3 - 75.3</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_6547036.png" /></td><td>65.4 - 70.3</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_6046547.png" /></td><td>60.4 - 65.4</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_61098.png" /></td><td>6 - 10.9</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_5556049.png" /></td><td>55.5 - 60.4</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_50555510.png" /></td><td>50.5 - 55.5</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_45650511.png" /></td><td>45.6 - 50.5</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_40645612.png" /></td><td>40.6 - 45.6</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_35640613.png" /></td><td>35.6 - 40.6</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_30735614.png" /></td><td>30.7 - 35.6</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_25830715.png" /></td><td>25.8 - 30.7</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_20825816.png" /></td><td>20.8 - 25.8</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_15920817.png" /></td><td>15.9 - 20.8</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_10915918.png" /></td><td>10.9 - 15.9</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_MediterraneanSea_East_1_1619.png" /></td><td>1 - 6</td></tr></table>': layer_ShipDetections_MediterraneanSea_East_1,'ShipDetections_BlackSea<br /><table><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_9511000.png" /></td><td>95.1 - 100</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_9019511.png" /></td><td>90.1 - 95.1</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_8529012.png" /></td><td>85.2 - 90.1</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_8028523.png" /></td><td>80.2 - 85.2</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_7538024.png" /></td><td>75.3 - 80.2</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_7037535.png" /></td><td>70.3 - 75.3</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_6547036.png" /></td><td>65.4 - 70.3</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_6046547.png" /></td><td>60.4 - 65.4</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_61098.png" /></td><td>6 - 10.9</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_5556049.png" /></td><td>55.5 - 60.4</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_50555510.png" /></td><td>50.5 - 55.5</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_45650511.png" /></td><td>45.6 - 50.5</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_40645612.png" /></td><td>40.6 - 45.6</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_35640613.png" /></td><td>35.6 - 40.6</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_30735614.png" /></td><td>30.7 - 35.6</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_25830715.png" /></td><td>25.8 - 30.7</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_20825816.png" /></td><td>20.8 - 25.8</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_15920817.png" /></td><td>15.9 - 20.8</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_10915918.png" /></td><td>10.9 - 15.9</td></tr><tr><td style="text-align: center;"><img src="legend/ShipDetections_BlackSea_1_1619.png" /></td><td>1 - 6</td></tr></table>': layer_ShipDetections_BlackSea_1,"Google Satellite": layer_GoogleSatellite_0,}).addTo(map);
         setBounds();
         </script>
     </body>
