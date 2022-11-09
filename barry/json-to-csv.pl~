@@ -1,0 +1,63 @@
+#!/bin/perl
+
+# convert JSON ship locations usefully
+
+require "/usr/local/lib/bclib.pl";
+
+my($pi) = 4*atan(1);
+
+# multiply by this number to convert degrees to radians
+
+my($degree) = $pi/180;
+
+for $i (glob("data/*.js")) {
+
+    debug("I: $i");
+
+    my($data) = read_file($i);
+
+    # remove variable declaration
+    $data=~s/var [a-z0-9_]+ \=\s*//isg;
+
+    my($json);
+
+    eval('$json = JSON::from_json($data);');
+
+    # data/ArabianSea_5.js is broken
+    if ($@) {warn("ERROR: $@ on $i"); next;}
+
+    for $j (@{$json->{features}}) {
+
+	debug(unfold($j->{geometry}->{coordinates}));
+	my($lng, $lat) = @{$j->{geometry}->{coordinates}};
+
+	debug("LNG: $lng, LAT: $lat");
+
+	lnglatZ2TileXY($lng, $lat, 6);
+
+#	debug("J: $j");
+    }
+
+#    debug("JSON: $json, I: $i, ERR: $@");
+
+}
+
+sub lnglatZ2TileXY {
+
+    my($lng, $lat, $z) = @_;
+
+    # convert to rads
+
+    $latrad = $lat*$degree;
+
+    # tweaked inverse Gudermannian function times zoom power
+
+    my($y) = 2**$z*(1/2-log(tan($latrad) + 1/cos($latrad))/2/$pi);
+    
+    # longitude is easy, don't even need to convert to rads
+
+    my($x) = ($lng+180)/360*2**$z;
+
+    debug("$lng/$lat/$z -> $z/$x/$y");
+
+}
