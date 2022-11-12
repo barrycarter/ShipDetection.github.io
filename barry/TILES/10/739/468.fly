@@ -3,6 +3,6 @@ size 256,256
 setpixel 0,0,0,0,0
 transparent 0,0,0
 fcircle 184,209,5,122,4,3
+fcircle 187,184,5,122,4,3
 fcircle 218,153,5,122,4,3
 fcircle 183,209,5,122,4,3
-fcircle 187,184,5,122,4,3
