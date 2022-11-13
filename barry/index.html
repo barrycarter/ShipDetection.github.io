@@ -6,10 +6,9 @@
 <script>
 
 let map = L.map('map').setView([0,0], 2);
-;
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, opacity: 0.5}).addTo(map);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxNativeZoom: 19, maxZoom: 25, opacity: 0.5}).addTo(map);
 
-L.tileLayer('TILES/{z}/{x}/{y}.png').addTo(map);
+L.tileLayer('TILES/{z}/{x}/{y}.png', {errorTileUrl: 'TILES/dragontile.png', maxNativeZoom: 10, maxZoom: 25}).addTo(map);
 
 </script>
