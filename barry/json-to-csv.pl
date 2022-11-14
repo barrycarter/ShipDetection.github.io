@@ -29,8 +29,6 @@ for $i (glob("../data/*.js")) {
 
     debug("I: $i");
 
-    if ($count++ >= 1) {warn("TESTING");last;}
-
     my($data) = read_file($i);
 
     # remove variable declaration
@@ -103,12 +101,10 @@ for $z (keys %hash) {
 	    unless ($color{$color}) {
 	      my($r,$g,$b) = split(/\,/, $color);
 	      $color{$color} = $im->colorAllocate($r, $g, $b);
-	      debug("ALLOCATING: $r, $g, $b -> $color{$color}");
 
 	    }
 
 	    my($px, $py) = split(/\,/, $pt);
-	    debug("SETTING: $px,$py to $color{$color}");
 	    $im->setPixel($px, $py, $color{$color});
 
 	  }
@@ -117,9 +113,6 @@ for $z (keys %hash) {
 	}
       }
   }
-
-
-# debug(%hash);
 
 sub lnglatZ2TileXY {
 
