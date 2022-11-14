@@ -3,7 +3,10 @@
 # convert JSON ship locations usefully
 
 use GD;
-require "/home/drew/Documents/GitHub/ShipDetection.github.io/barry/bclib.pl";
+
+for $i ("/usr/local/lib/bclib.pl", "/home/drew/Documents/GitHub/ShipDetection.github.io/barry/bclib.pl") {
+    if (-f $i) {require $i;}
+}
 
 my($pi) = 4*atan(1);
 
