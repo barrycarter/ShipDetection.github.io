@@ -2,7 +2,11 @@
 
 # convert JSON ship locations usefully
 
-require "/home/drew/Documents/GitHub/ShipDetection.github.io/barry/bclib.pl";
+use GD;
+
+for $i ("/usr/local/lib/bclib.pl", "/home/drew/Documents/GitHub/ShipDetection.github.io/barry/bclib.pl") {
+    if (-f $i) {require $i;}
+}
 
 my($pi) = 4*atan(1);
 
@@ -12,7 +16,10 @@ my($degree) = $pi/180;
 
 # hash to store stuff in
 
-my(%hash); 
+my(%hash);
+
+# stores locations in grids
+my(%locs);
 
 # colors based on age (1st elt is 1.0-13.0 days, then 13.0-25.0 days,
 # and increasing by 12 until 121
@@ -34,12 +41,14 @@ for $i (glob("../data/*.js")) {
 
     eval('$json = JSON::from_json($data);');
 
-    # data/ArabianSea_5.js is broken
     if ($@) {warn("ERROR: $@ on $i"); next;}
 
     for $j (@{$json->{features}}) {
 
 	my($lng, $lat) = @{$j->{geometry}->{coordinates}};
+
+	# record floor of $lng and $lat to store in 1 deg square boxes
+	$locs{floor($lng)}{floor($lat)}++;
 
 	my($age) = $j->{properties}->{DaysOld};
 	my($color) = $colors[floor(($age-1)/12)];
@@ -47,7 +56,7 @@ for $i (glob("../data/*.js")) {
 	# find color index from age
 #	debug(floor(($age-1)/12));
 
-	# create tiles to level 6
+	# create tiles to level 10
 
 	for $z (0..10) {
 	    my($x, $y, $px, $py) = @{lnglatZ2TileXY($lng, $lat, $z)};
@@ -56,6 +65,12 @@ for $i (glob("../data/*.js")) {
 	    $hash{$z}{$x}{$y}{"$px,$py"} = $color;
 
 	}
+    }
+}
+
+for $i (keys %locs) {
+    for $j (keys %{$locs{$i}}) {
+#	debug("$i, $j, $locs{$i}{$j}");
     }
 }
 
@@ -75,23 +90,32 @@ for $z (keys %hash) {
 
 	for $y (keys %{$hash{$z}{$x}}) {
 
-	    # create the fly file and populate it
-	    open(A, ">TILES/$z/$x/$y.fly");
-	    print A "new\nsize 256,256\nsetpixel 0,0,0,0,0\ntransparent 0,0,0\n";
+	  debug("TILES: $z/$x/$y.png");
 
-	    for $pt (keys %{$hash{$z}{$x}{$y}}) {
+	  # create a new image with black as transparent, reset color has
+	  my($im) = new GD::Image(256,256);
+	  my($black) = $im->colorAllocate(0, 0, 0);
+	  $im->transparent($black);
+	  my(%color) = ();
 
-		my($color) = $hash{$z}{$x}{$y}{$pt};
-#		debug("COLOR BETA: $color");
-#		print A "setpixel $pt,$color\n";
-		print A "fcircle $pt,5,$color\n";
+	  for $pt (keys %{$hash{$z}{$x}{$y}}) {
+	    my($color) = $hash{$z}{$x}{$y}{$pt};
+
+	    unless ($color{$color}) {
+	      my($r,$g,$b) = split(/\,/, $color);
+	      $color{$color} = $im->colorAllocate($r, $g, $b);
+
 	    }
-	    close(A);
-	}
-    }
-}
 
-# debug(%hash);
+	    my($px, $py) = split(/\,/, $pt);
+	    $im->setPixel($px, $py, $color{$color});
+
+	  }
+
+	  write_file($im->png, "TILES/$z/$x/$y.png");
+	}
+      }
+  }
 
 sub lnglatZ2TileXY {
 
