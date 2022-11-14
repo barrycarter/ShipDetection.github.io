@@ -5,10 +5,24 @@
 
 <script>
 
-let map = L.map('map').setView([0,0], 2);
+let map = L.map('map').setView([0,0], 3);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxNativeZoom: 19, maxZoom: 25, opacity: 0.5}).addTo(map);
-
+// L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxNativeZoom: 19, maxZoom: 25, opacity: 0.5}).addTo(map);
 L.tileLayer('TILES/{z}/{x}/{y}.png', {errorTileUrl: 'TILES/dragontile.png', maxNativeZoom: 10, maxZoom: 25}).addTo(map);
+
+map.createPane('pane_GoogleSatellite_0');
+        map.getPane('pane_GoogleSatellite_0').style.zIndex = 400;
+        var layer_GoogleSatellite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatellite_0',
+            opacity: 0.45,
+            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_GoogleSatellite_0;
+        map.addLayer(layer_GoogleSatellite_0);
+
 
 </script>

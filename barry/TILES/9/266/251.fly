@@ -4,6 +4,6 @@ setpixel 0,0,0,0,0
 transparent 0,0,0
 fcircle 123,221,5,122,4,3
 fcircle 25,181,5,122,4,3
-fcircle 0,84,5,122,4,3
+fcircle 0,84,5,201,41,3
+fcircle 24,152,5,245,105,23
 fcircle 138,0,5,122,4,3
-fcircle 24,152,5,201,41,3

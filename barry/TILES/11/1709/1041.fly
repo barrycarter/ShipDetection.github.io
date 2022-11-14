@@ -1,0 +1,18 @@
+new
+size 256,256
+setpixel 0,0,0,0,0
+transparent 0,0,0
+fcircle 99,214,5,201,41,3
+fcircle 83,116,5,201,41,3
+fcircle 150,229,5,201,41,3
+fcircle 69,191,5,122,4,3
+fcircle 92,200,5,122,4,3
+fcircle 88,197,5,122,4,3
+fcircle 34,189,5,122,4,3
+fcircle 134,182,5,245,105,23
+fcircle 131,163,5,201,41,3
+fcircle 251,7,5,201,41,3
+fcircle 205,115,5,122,4,3
+fcircle 66,204,5,122,4,3
+fcircle 98,136,5,122,4,3
+fcircle 71,218,5,122,4,3
