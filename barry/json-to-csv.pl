@@ -12,7 +12,10 @@ my($degree) = $pi/180;
 
 # hash to store stuff in
 
-my(%hash); 
+my(%hash);
+
+# stores locations in grids
+my(%locs);
 
 # colors based on age (1st elt is 1.0-13.0 days, then 13.0-25.0 days,
 # and increasing by 12 until 121
@@ -41,13 +44,16 @@ for $i (glob("../data/*.js")) {
 
 	my($lng, $lat) = @{$j->{geometry}->{coordinates}};
 
+	# record floor of $lng and $lat to store in 1 deg square boxes
+	$locs{floor($lng)}{floor($lat)}++;
+
 	my($age) = $j->{properties}->{DaysOld};
 	my($color) = $colors[floor(($age-1)/12)];
 
 	# find color index from age
 #	debug(floor(($age-1)/12));
 
-	# create tiles to level 6
+	# create tiles to level 10
 
 	for $z (0..10) {
 	    my($x, $y, $px, $py) = @{lnglatZ2TileXY($lng, $lat, $z)};
@@ -56,6 +62,12 @@ for $i (glob("../data/*.js")) {
 	    $hash{$z}{$x}{$y}{"$px,$py"} = $color;
 
 	}
+    }
+}
+
+for $i (keys %locs) {
+    for $j (keys %{$locs{$i}}) {
+	debug("$i, $j, $locs{$i}{$j}");
     }
 }
 
@@ -83,8 +95,8 @@ for $z (keys %hash) {
 
 		my($color) = $hash{$z}{$x}{$y}{$pt};
 #		debug("COLOR BETA: $color");
-#		print A "setpixel $pt,$color\n";
-		print A "fcircle $pt,5,$color\n";
+		print A "setpixel $pt,$color\n";
+#		print A "fcircle $pt,5,$color\n";
 	    }
 	    close(A);
 	}
