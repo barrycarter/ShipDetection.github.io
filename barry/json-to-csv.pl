@@ -2,6 +2,7 @@
 
 # convert JSON ship locations usefully
 
+use GD;
 require "/usr/local/lib/bclib.pl";
 
 my($pi) = 4*atan(1);
@@ -28,6 +29,8 @@ for $i (glob("../data/*.js")) {
 
     debug("I: $i");
 
+    if ($count++ >= 1) {warn("TESTING");last;}
+
     my($data) = read_file($i);
 
     # remove variable declaration
@@ -37,7 +40,6 @@ for $i (glob("../data/*.js")) {
 
     eval('$json = JSON::from_json($data);');
 
-    # data/ArabianSea_5.js is broken
     if ($@) {warn("ERROR: $@ on $i"); next;}
 
     for $j (@{$json->{features}}) {
@@ -67,7 +69,7 @@ for $i (glob("../data/*.js")) {
 
 for $i (keys %locs) {
     for $j (keys %{$locs{$i}}) {
-	debug("$i, $j, $locs{$i}{$j}");
+#	debug("$i, $j, $locs{$i}{$j}");
     }
 }
 
@@ -87,21 +89,35 @@ for $z (keys %hash) {
 
 	for $y (keys %{$hash{$z}{$x}}) {
 
-	    # create the fly file and populate it
-	    open(A, ">TILES/$z/$x/$y.fly");
-	    print A "new\nsize 256,256\nsetpixel 0,0,0,0,0\ntransparent 0,0,0\n";
+	  debug("TILES: $z/$x/$y.png");
 
-	    for $pt (keys %{$hash{$z}{$x}{$y}}) {
+	  # create a new image with black as transparent, reset color has
+	  my($im) = new GD::Image(256,256);
+	  my($black) = $im->colorAllocate(0, 0, 0);
+	  $im->transparent($black);
+	  my(%color) = ();
 
-		my($color) = $hash{$z}{$x}{$y}{$pt};
-#		debug("COLOR BETA: $color");
-		print A "setpixel $pt,$color\n";
-#		print A "fcircle $pt,5,$color\n";
+	  for $pt (keys %{$hash{$z}{$x}{$y}}) {
+	    my($color) = $hash{$z}{$x}{$y}{$pt};
+
+	    unless ($color{$color}) {
+	      my($r,$g,$b) = split(/\,/, $color);
+	      $color{$color} = $im->colorAllocate($r, $g, $b);
+	      debug("ALLOCATING: $r, $g, $b -> $color{$color}");
+
 	    }
-	    close(A);
+
+	    my($px, $py) = split(/\,/, $pt);
+	    debug("SETTING: $px,$py to $color{$color}");
+	    $im->setPixel($px, $py, $color{$color});
+
+	  }
+
+	  write_file($im->png, "TILES/$z/$x/$y.png");
 	}
-    }
-}
+      }
+  }
+
 
 # debug(%hash);
 
