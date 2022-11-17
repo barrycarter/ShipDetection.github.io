@@ -1,0 +1,63 @@
+#!/usr/local/bin/bython -k
+
+from glob import *;
+from math import *;
+import json;
+import re;
+import os;
+from bclib import *;
+
+# do this check early on, no point in doing computations otherwise
+
+if (not os.path.exists("TILES")) {die("TILES must exist");}
+
+# to store pixels
+
+pixels = dict();
+
+colors = ["122,4,3", "201,41,3", "245,105,23", "251,185,56",
+"201,239,52", "116,254,93", "26,229,182", "53,171,249", "70,98,216",
+"48,18,59"];
+
+debugcount = 0;
+
+for i in glob("../data/*.js") {
+
+ data = open(i).read();
+
+ debugcount+=1;
+ if (debugcount > 50) {
+   break;
+ }
+
+ # remove var ... =
+ data = re.sub("var [a-zA-Z0-9_]+\s*\=\s*", "", data);
+
+ jdata = json.loads(data);
+
+ for j in jdata["features"] {
+
+  lng, lat = j["geometry"]["coordinates"];
+
+  age = float(j["properties"]["DaysOld"]);
+
+  color = colors[floor((age-1)/12)];
+
+  for z in range(11) {
+
+    conv = lngLat2Tile(lng=lng, lat=lat, z=z);
+
+    # the keys are the tile and then pixel, the value is the color
+
+    key1 = "%d,%d,%d" % (z,conv['x'],conv['y']);
+    key2 = "%d,%d" % (conv['px'],conv['py']);
+
+    pixels[key1, key2] = color;
+
+  }
+ }
+}
+
+for tile in pixels {
+  print("TILE",tile,"VAL",pixels[tile]);
+}
