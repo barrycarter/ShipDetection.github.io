@@ -23,7 +23,7 @@ colors = ["122,4,3", "201,41,3", "245,105,23", "251,185,56",
 
 debugcount = 0
 
-for i in glob("../data/*.js"):
+for i in glob("points/data/*.js"):
     
     data = open(i).read()
     
