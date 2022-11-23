@@ -40,7 +40,7 @@ for i in glob("points/data/*.js"):
         
         color = colors[floor((age-1)/12)]
         
-        for z in range(11):
+        for z in range(12):
             
             conv = lngLat2Tile(lng=lng, lat=lat, z=z)
             
@@ -61,7 +61,7 @@ for i in glob("points/data/*.js"):
 
 for tile in pixels.keys():
     
-    print("TILE", tile)
+    # print("TILE", tile)
     
     # find the z, x, y for this tile and create TILES/z/x if needed
     z, x, y = tile.split(",")
@@ -92,10 +92,18 @@ for tile in pixels.keys():
         g = int(g)
         b = int(b)
         
-        #  print("X",x,"Y",y,"R",r,"G",g,"B",b)
-        
-        img.putpixel((x,y), (r,g,b))
-    
+        if ((-254<x<254) and (-254<y<254) and (int(z)>=5)):
+            img.putpixel((x,y), (r,g,b))
+            img.putpixel((x+1,y+1), (r,g,b))
+            img.putpixel((x+1,y-1), (r,g,b))
+            img.putpixel((x-1,y+1), (r,g,b))
+            img.putpixel((x-1,y-1), (r,g,b))
+            img.putpixel((x,y+1), (r,g,b))
+            img.putpixel((x,y-1), (r,g,b))
+            img.putpixel((x-1,y), (r,g,b))
+            img.putpixel((x+1,y), (r,g,b))
+        else:
+            img.putpixel((x,y), (r,g,b))
     
     img.save(file)
     
